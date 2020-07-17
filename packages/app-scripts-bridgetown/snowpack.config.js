@@ -24,15 +24,22 @@ if (
 
 module.exports = {
   scripts,
+  installOptions: {
+    NODE_ENV: true
+  },
+  devOptions: {
+    // Default port of bridgetown
+    port: 4000,
+    open: "none",
+    // Default output directory of Bridgetown
+    out: "output"
+  },
+  // Account for users using Docker
+  proxy: {
+    "0.0.0.0:4000": "0.0.0.0:4000"
+  },
   plugins: [
     "@snowpack/plugin-dotenv",
     "@snowpack/plugin-babel"
   ],
-  devOptions: {
-    port: 4000,
-    open: "none",
-    out: "output"
-  },
-  installOptions: {
-  },
 };
